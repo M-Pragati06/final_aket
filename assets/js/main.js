@@ -277,16 +277,60 @@ document.querySelectorAll('.footer_services').forEach(link => {
   });
 });
 
+// document.addEventListener('DOMContentLoaded', function() {
+//   var carousel = document.getElementById('carouselExampleIndicators');
+//   var listItems = document.querySelectorAll('.image-list li');
+  
+//   carousel.addEventListener('slid.bs.carousel', function (event) {
+//       // Remove active class from all list items
+//       listItems.forEach(function(item) {
+//           item.classList.remove('active');
+//       });
+      
+//       // Add active class to the corresponding list item
+//       var activeIndex = event.to;
+//       listItems[activeIndex].classList.add('active');
+//   });
+// });
 
+// // Add active class to clicked list item
+// document.querySelectorAll('.image-list li').forEach((item, index) => {
+//   item.addEventListener('click', function() {
+//       document.querySelector('.image-list .active').classList.remove('active');
+//       this.classList.add('active');
 
-// Add active class to clicked list item
-document.querySelectorAll('.image-list li').forEach((item, index) => {
-  item.addEventListener('click', function() {
-      document.querySelector('.image-list .active').classList.remove('active');
-      this.classList.add('active');
+//       // Move the carousel to the selected index
+//       let carousel = new bootstrap.Carousel(document.querySelector('#carouselExampleIndicators'));
+//       carousel.to(index);
+//   });
+// });
 
-      // Move the carousel to the selected index
-      let carousel = new bootstrap.Carousel(document.querySelector('#carouselExampleIndicators'));
-      carousel.to(index);
+document.addEventListener('DOMContentLoaded', function() {
+  const carousel = document.querySelector('#carouselExampleIndicators');
+  const titles = document.querySelectorAll('.image-list li');
+  
+  // Initialize Bootstrap Carousel
+  const bsCarousel = new bootstrap.Carousel(carousel);
+  
+  // Listen for slide events
+  carousel.addEventListener('slid.bs.carousel', function(event) {
+    const activeIndex = event.to;
+    
+    // Update titles
+    titles.forEach((title, index) => {
+      if (index === activeIndex) {
+        title.classList.add('active');
+      } else {
+        title.classList.remove('active');
+      }
+    });
+  });
+  
+  // Make titles clickable
+  titles.forEach(title => {
+    title.addEventListener('click', function() {
+      const slideTo = this.getAttribute('data-bs-slide-to');
+      bsCarousel.to(slideTo);
+    });
   });
 });

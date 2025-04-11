@@ -60,6 +60,11 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
+body,html{
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   color: var(--default-color);
   background-color: var(--background-color);
@@ -736,20 +741,22 @@ section,
 
 .image-list li {
   list-style: none;
-  padding: 10px 20px;
+  padding: 0px 20px;
   cursor: pointer;
-  color: #fff;
+  color: #000;
   font-weight: bold;
-  border-radius: 5px;
-  background: -webkit-linear-gradient(#3e72d3, #283b8d);
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease-in-out;
+  /* border-radius: 0px; */
+  /* background: -webkit-linear-gradient(#3e72d3, #283b8d); */
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+  transition: 0.3s ease-in;
 }
 
-.image-list li:hover, .image-list .active {
-  background: -webkit-linear-gradient(#283b8d,#3e72d3);
-  color: #ff9800;
-  transform: scale(1.1);
+.image-list .active {
+  /* background: -webkit-linear-gradient(#283b8d,#3e72d3); */
+  border-top: 3px solid #007bff;
+  border-radius: none;
+  border-bottom: 3px solid #007bff;
+  /* transform: scale(1.1); */
 }
 
 /*--------------------------------------------------------------
@@ -2017,3 +2024,53 @@ portfolio section
   width: auto;
 }
 
+/* Custom responsive styles */
+.image-list li {
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.image-list li:hover, 
+.image-list li.active {
+  background-color: #f8f9fa;
+  font-weight: bold;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Ensure images maintain aspect ratio */
+.carousel-inner img {
+  object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .carousel-indicators {
+    margin-bottom: 5px;
+  }
+  
+  .image-list {
+    gap: 2px;
+  }
+  
+  .image-list li {
+    font-size: 10px;
+    padding: 4px 8px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-control-prev, 
+  .carousel-control-next {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
