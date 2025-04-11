@@ -753,9 +753,9 @@ section,
 
 .image-list .active {
   /* background: -webkit-linear-gradient(#283b8d,#3e72d3); */
-  border-top: 3px solid #007bff;
+  border-top: 1px solid #007bff;
   border-radius: none;
-  border-bottom: 3px solid #007bff;
+  border-bottom: 1px solid #007bff;
   /* transform: scale(1.1); */
 }
 
